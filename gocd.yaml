@@ -1,15 +1,15 @@
 format_version: 3
 pipelines:
   HelloApp:
-    group: myFirstpipeline
+    group: myFirstPipeline
     label_template: "${COUNT}"
     lock_behavior: none
     materials:
-  git:
-    url: https://github.com/htetgit/App-update.git
-    branch: main
-    shallow_clone: false
-    auto_update: true
+      git:
+        url: https://github.com/htetgit/App-update.git
+        branch: main
+        shallow_clone: false
+        auto_update: true
 
     stages:
       - name: Build
@@ -27,6 +27,7 @@ pipelines:
                   command: go
                   arguments: ["build", "-o", "main", "."]
                   working_directory: "."
+
       - name: Dockerize
         fetch_materials: true
         keep_artifacts: false
